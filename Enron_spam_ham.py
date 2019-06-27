@@ -70,6 +70,7 @@ vectorizer = TfidfVectorizer(input='filename',lowercase=True, stop_words="englis
                              encoding='latin-1',min_df=8) 
 
 spam_filenames = glob.glob( BASE_DIR + SPAM_DIR + '*.txt')
+print(spam_filenames)
 ham_filenames = glob.glob( BASE_DIR + HAM_DIR + '*.txt')
 test_filenames = [BASE_DIR + TEST_DIR + str(x) + '.txt' for x in range(NUM_TEST_EXAMPLES)]
 all_filenames = spam_filenames + ham_filenames # including test_filenames
@@ -100,7 +101,7 @@ file_dict['training_data'].todense()
 
 
 # In[50]:
-
+data = scipy.io.loadmat('./email_data.mat')
 
 train_X = data['training_data'].toarray()
 train_y = data['training_labels'].reshape(X.shape[0],1)
